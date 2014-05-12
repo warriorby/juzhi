@@ -1,1 +1,18 @@
 apply plugin: 'jetty'
+
+dependencies{
+compile (
+        'javax.servlet:servlet-api:2.5',
+        'org.springframework:spring-core:4.0.3.RELEASE',
+        'org.springframework:spring-webmvc:4.0.3.RELEASE',
+        'org.springframework:spring-context-support:4.0.0.RELEASE',
+        'org.apache.httpcomponents:httpclient:4.0-alpha4',
+        'mysql:mysql-connector-java:5.0.8',
+        'org.springframework:spring-jdbc:4.0.3.RELEASE',
+        'org.apache.velocity:velocity:1.7',
+        'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+)
+}
+
+
+

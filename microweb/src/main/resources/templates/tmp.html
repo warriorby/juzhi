@@ -1,0 +1,198 @@
+#include("htmlheader.vm")
+<body>
+<div class="head">
+    <h2 class="center">选择课程</h2>
+    <a href="/user/" class="floatl back"><span class="backSpan"><em>&nbsp;</em></span>课程</a>
+</div>
+
+<div class="clearfix listMenu ">
+    <div class="headNav floatl" id="selectLottery"><cite>上海公务员</cite><em class="headArr"></em></div>
+    <div class="headNav floatno" id="selectDate"><cite>VIP系列</cite><em class="headArr"></em></div>
+    <div class="headNav floatr" id="selectStatus"><cite>选择班级</cite><em class="headArr"></em></div>
+    <!--课程-->
+    <div class="layer layercz layerScale" style="display:none;" id="lotteryList">
+        <div class="layer_arr"></div>
+        <div class="layer_box">
+            <h3 class="mb8">选择类型</h3>
+
+            <div class="clearfix lians">
+                <a href="#" class="clickBtn clickBtnOn" name="all" ptype="all">全部课程</a>
+                <a href="#" class="clickBtn " name="dc" ptype="dc">上海公务员</a>
+                <a href="#" class="clickBtn " name="jc" ptype="jc">公安文职</a>
+                <a href="#" class="clickBtn " name="lc" ptype="lc">警察学员</a>
+                <a href="#" class="clickBtn " name="zc" ptype="zc">教师资格证</a>
+                <a href="#" class="clickBtn " name="fc" ptype="fc">公安警察</a>
+                <a href="#" class="clickBtn " name="tc" ptype="tc">事业单位</a>
+                <a href="#" class="clickBtn " name="fl" ptype="fl">国家公务员</a>
+            </div>
+        </div>
+    </div>
+    <!--系列-->
+    <div class="layer layerdate layerScale" style="display:none;" id="dateList">
+        <div class="layer_arr"></div>
+        <div class="layer_box">
+            <h3 class="mb8">选择系列</h3>
+
+            <div class="clearfix lians">
+                <a href="#" class="clickBtn clickBtnOn">套餐</a>
+                <a href="#" class="clickBtn ">基础强化</a>
+                <a href="#" class="clickBtn ">技巧精讲</a>
+                <a href="#" class="clickBtn ">精品集训</a>
+                <a href="#" class="clickBtn ">VIP</a>
+                <a href="#" class="clickBtn ">协议班</a>
+                <a href="#" class="clickBtn ">冲刺预测</a>
+            </div>
+        </div>
+    </div>
+    <!--班级-->
+    <div class="layer layerzt layerScale" style="display:none;" id="statusList">
+        <div class="layer_arr"></div>
+        <div class="layer_box">
+            <h3 class="mb8">选择班级类型</h3>
+
+            <div class="clearfix lians">
+                <a href="#" class="clickBtn clickBtnOn" name="all" ptype="all">全部班级</a>
+                <a href="#" class="clickBtn " name="on" ptype="on">奖学金一班</a>
+                <a href="#" class="clickBtn " name="fail" ptype="fail">奖学金二班</a>
+                <a href="#" class="clickBtn " name="deal" ptype="deal">奖学金三班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">奖学金四班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">精英一班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">精英二班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">精英三班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">精英四班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">冲刺一班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">冲刺二班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">冲刺三班</a>
+                <a href="#" class="clickBtn " name="prize" ptype="prize">冲刺四班</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--listMenu over-->
+<div class="padlr8 font12">
+    <ul class="bdbox relList betListBox ">
+    </ul>
+</div>
+<!-- jQuery 2.0.2 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	category_list();
+	$("#selectLottery").change(function(){
+		var category = $("#selectLottery").val();
+		$("#pre-address").html(province);
+		showcity(province);//省份发生变化时，城市下拉菜单也要随之变化
+		$("#postcode_add").attr('value', '');//在选择town项时，会自动获取邮政编码
+	})
+})
+
+//省份下拉菜单
+function category_list(){
+	$.getJSON('http://www.witsun.com/app/classCategoryList.php',
+			{},
+			function(data){
+				$("#").append("");
+				$.each(data,function(i,k){
+					if ( i==0 ) {
+						$("#province_select").append("<option selected>请选择</option><option value='"+k.local_name+"' >"+k.local_name+"</option>");
+						showcity(k.local_name);
+					} else {
+						$("#province_select").append("<option value='"+k.local_name+"'>"+k.local_name+"</option>");
+					}
+				})
+			});
+}
+//显示城市下拉菜单
+function showcity(province){
+	$.getJSON('/?c=addr&a=getcity',
+			{province:province},
+			function(data){
+				$("#city_select_poss").html("");
+				$("#town_select_poss").html("");
+				if (data) {
+					$("#city_select_poss").html("<select id='city_select' name='city' onChange='city_select_function();'></select>");
+				}
+				$("#city_select").html("");
+				$.each(data,function(i,k){
+					if ( i == 0){
+						$("#city_select").append("<option  selected>请选择</option><option value='"+k.local_name+"'>"+k.local_name+"</option>");
+						var addr = province + k.local_name;
+						//$("#pre-address").html(addr);
+						showtown(k.local_name);
+					} else {
+						$("#city_select").append("<option value='"+k.local_name+"'>"+k.local_name+"</option>");
+					}
+				})
+			})
+}
+
+//显示城乡下拉菜单
+function showtown(city){
+	$.getJSON('/?c=addr&a=gettown',
+			{city:city},
+			function(data){
+				if (data) {
+					$("#town_select_poss").html("<select id='town_select' name='town' onchange='town_select_function();'></select>");
+				} else {
+					$("#town_select_poss").html("");
+				}
+				$("#town_select").html("");
+				$.each(data,function(i,k){
+					if ( i == 0 ) {
+						$("#town_select").append("<option selected>请选择</option><option value='"+k.local_name+"'>"+k.local_name+"</option>");
+					} else {
+						$("#town_select").append("<option value='"+k.local_name+"'>"+k.local_name+"</option>");
+					}
+				})
+			}
+			)
+}
+//获取邮政编码
+function getPostCode(town, city, province,id){
+	$.get('/?c=addr&a=getpost',
+			{town:town,city:city,province:province},
+			function( data ){
+				if ( data > 0 ) {
+					if ( id == "" || id== undefined) {
+						$("#postcode_add").attr('value', data);
+					} else {
+						$("#"+id+"postcode_add").attr('value', data);
+					}
+				} else {
+					//$("#postcode_add").attr('value', '');
+					if ( id == "" || id== undefined) {
+						$("#postcode_add").attr('value', '');
+					} else {
+						$("#"+id+"postcode_add").attr('value', '');
+					}
+				}
+			}
+		)
+}
+
+//城市选项发生改变时，触发此函数
+function city_select_function() {
+	var province = $("#province_select").find("option:selected").text();
+	var city = $("#city_select").find("option:selected").text();
+	var addr = province + city;
+	$("#pre-address").html(addr);
+	showtown(city);
+	var town = $("#town_select").find("option:selected").text();
+	getPostCode(town, city, province);
+}
+
+//城乡选项发生变化时，触发此函数
+function town_select_function(){
+	var province = $("#province_select").find("option:selected").text();
+	var city = $("#city_select").find("option:selected").text();
+	var town = $("#town_select").find("option:selected").text();
+	var addr = province + city + town;
+	$("#pre-address").html(addr);
+	getPostCode(town, city, province);
+}
+
+
+
+</script>
+</body>
+#include("htmlfooter.vm")

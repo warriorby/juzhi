@@ -1,0 +1,25 @@
+
+#include("htmlheader.vm")
+<body>
+
+<div id="wrapper" class="wrapper"><div id="scroller">
+    <header class="head">
+        <h2 class="center">招考资讯</h2>
+        <a href="/" class="floatl back"><span class="backSpan"><em>&nbsp;</em></span>首页</a>
+    </header>
+    
+    <section class="padlr8 newsBox">
+    	<header><p class="fontbold font16">福彩3D121期:组三欲回补 跨度中区</p><p class="gray9 font12">2014年05月09日 10:59</p></header>
+    	<div class="newmain"><div>1、趋势分析：近期奖号分布显示热点主要集中在大号上，后几期应以关注中号区域之间的号码回补为主，下期中号区域防落下2-3码，重点防4-6等。</div>
+<div>2、三路号码分析：0路号近期9号最强势，后期防3、6号回补;1路号近期4号弱势，后几期内关注4号再回补;2路号近期8号偏热，下期看好2号回补。</div>
+<div>3、和值趋势分析：和值近期振荡在中大值点位，后几期应是落于中值点位附近的情况，主防12-16点左右。</div>
+<div>4、对子号分析：组三号码近期趋势较弱，未来3期内可预防其再次回补。</div>
+<div>5、跨度提示：近5期跨度分别是9、7、7、5、3，近期反复开出偏中大的跨度值，后期主防短缺的中跨度值4、6等。</div>
+<div>第14121-123期推荐：</div>
+<div>276、671、967、362、610、817、</div>
+<div>348、295、297、782、637、086。</div>
+</div>
+    </section>
+
+</div></div></body>
+#include("htmlfooter.vm")

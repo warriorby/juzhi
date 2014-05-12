@@ -1,0 +1,19 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>巨智教育</title>
+<meta name="keywords" content="巨智教育"/>
+<meta name="description" content="巨智教育"/>
+    <link href="http://m.okoooimg.com/min/?b=css&f=global.css,user.css&v=20140422" rel="stylesheet" type="text/css" />
+<script src="http://m.okoooimg.com/min/?b=js&f=public%2Fzepto.min.js,public%2Fanalytics.js,public%2Fpublic.js,public%2Fpcconsole.js&v=2014042502" type="text/javascript"></script>
+<script src="http://m.okoooimg.com/min/?b=js&f=user%2Flist.js&v=2014041501" type="text/javascript"></script><script>
+ga('create', 'UA-144633-3', 'okooo.com');
+ga('send', 'pageview');
+</script>
+</head>

@@ -1,0 +1,9 @@
+#foreach($test in $tests)
+$test.id | $test.name
+#end
+<hr/>
+$infoDetailed.name   |   $infoDetailed.info
+
+<hr/>
+$categoryList.name |  $categoryList.size
+
