@@ -2,8 +2,23 @@
 $test.id | $test.name
 #end
 <hr/>
-$infoDetailed.name   |   $infoDetailed.info
+$infoDetailed.name   |   $infoDetailed.info<br/>
 
 <hr/>
-$categoryList.name |  $categoryList.size
+#foreach($category in $categories)
+$category.id | $category.name  | $category.size<br/>
+#end
+
+<hr/>
+#foreach($info in $infos)
+$info.name  | $info.author<br/>
+#end
+
+<hr/>
+#foreach($clazz in $clazzs)
+ $clazz.id | $clazz.name  | $clazz.price | $clazz.place<br/>
+#end
+
+<hr/>
+$classDetailed.name   |   $classDetailed.info <br/>
 

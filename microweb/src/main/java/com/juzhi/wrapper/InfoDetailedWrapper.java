@@ -1,4 +1,6 @@
-package com.juzhi.entity;
+package com.juzhi.wrapper;
+
+import com.juzhi.entity.InfoDetailed;
 
 import java.util.List;
 

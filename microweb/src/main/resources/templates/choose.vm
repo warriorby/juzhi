@@ -24,7 +24,7 @@
 				<a href="#" class="clickBtn " name="fc" ptype="fc">公安警察</a>
 				<a href="#" class="clickBtn " name="tc" ptype="tc">事业单位</a>
 				<a href="#" class="clickBtn " name="fl" ptype="fl">国家公务员</a>
-			            </div>
+			</div>
         </div>
     </div>
     <!--系列-->
